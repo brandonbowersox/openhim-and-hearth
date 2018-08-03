@@ -31,4 +31,13 @@ services:
         - "9000:80"
     volumes:
       - ./default.json:/usr/share/nginx/html/config/default.json
-    
+
+  hearth:
+    container_name: hearth
+    image: jembi/hearth
+    ports:
+      - "3447:3447"
+    environment:
+      - mongodb__url=mongodb://mongo/hearth
+    depends_on:
+      - mongo
